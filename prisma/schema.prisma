@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Summary {
+  id Int @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  total Int @default(0)
+  recoveries Int @default(0)
+  deaths Int @default(0)
+  active_cases Int @default(0)
+  fatality_rate Float @default(0)
+  recovery_rate Float @default(0)
+  last_updates DateTime
+}
